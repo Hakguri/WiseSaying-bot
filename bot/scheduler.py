@@ -17,7 +17,7 @@ load_dotenv(dotenv_path)
 
 TOKEN = os.getenv("TELEGRAM_TOKEN")
 CHAT_ID = int(os.getenv("TELEGRAM_CHAT_ID"))
-BBS_URL = os.getenv("BBS_URL", "http://lam2025.dothome.co.kr")
+BBS_URL = os.getenv("BBS_URL", "https://wisesaying-bbs.onrender.com")
 
 
 def send_daily_quote():
@@ -38,7 +38,7 @@ def send_daily_quote():
         post_id = save_quote_to_bbs(quote, author, date_str)
         if not post_id:
             raise Exception("명언 저장 실패")
-        post_url = f"http://lam2025.dothome.co.kr/view.php?id={post_id}"
+        post_url = f"{BBS_URL}/view.php?id={post_id}"
 
         # 텔레그램 메시지 전송
         message = f"📢 {now}\n오늘의 투자 명언입니다:\n\n{quote}\n\n💬 댓글 작성하기: {post_url}"
